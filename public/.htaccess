@@ -1,0 +1,32 @@
+Options -Indexes
+
+<IfModule mod_rewrite.c>
+    # Zrušené +FollowSymlinks kvôli bezpečnosti (chyba L2 v analýze)
+    Options +SymLinksIfOwnerMatch
+    RewriteEngine On
+
+    # 1. Odstránenie lomky na konci (Trailing Slash)
+    RewriteCond %{REQUEST_FILENAME} !-d
+    RewriteCond %{REQUEST_URI} (.+)/$
+    RewriteRule ^ %1 [L,R=301]
+
+    # 2. HTTPS + non-www presmerovanie (nastavte si vlastnú doménu)
+    # RewriteCond %{HTTPS} off [OR]
+    # RewriteCond %{HTTP_HOST} ^www\. [NC]
+    # RewriteRule ^ https://vasadomena.sk%{REQUEST_URI} [L,R=301]
+
+    # 3. Smerovanie na Front Controller (index.php)
+    RewriteCond %{REQUEST_FILENAME} !-f
+    RewriteCond %{REQUEST_FILENAME} !-d
+    RewriteRule ^(.*)$ index.php/$1 [L,NC,QSA]
+
+    # 4. Prenos Authorization hlavičky (potrebné pre API/Basic Auth)
+    RewriteCond %{HTTP:Authorization} .
+    RewriteRule .* - [E=HTTP_AUTHORIZATION:%{HTTP:Authorization}]
+</IfModule>
+
+<IfModule !mod_rewrite.c>
+    ErrorDocument 404 index.php
+</IfModule>
+
+ServerSignature Off

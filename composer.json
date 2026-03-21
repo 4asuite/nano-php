@@ -1,0 +1,23 @@
+{
+    "name": "4asuite/nano-php",
+    "description": "Ultra-minimalist PHP µFramework for small websites",
+    "type": "project",
+    "license": "MIT",
+    "keywords": ["php", "framework", "nano", "mvc"],
+    "authors": [
+        {
+            "name": "Vlado Majoros",
+            "homepage": "https://4asuite.com"
+        }
+    ],
+    "require": {
+        "php": "^8.1"
+    },
+    "autoload": {
+        "psr-4": {
+            "App\\": "App/"
+        }
+    },
+    "minimum-stability": "stable"
+}
+
