@@ -1,6 +1,6 @@
 {
     "name": "4asuite/nano-php",
-    "description": "Ultra-minimalist PHP µFramework for small websites",
+    "description": "Ultra-minimalist PHP framework for small websites",
     "type": "project",
     "license": "MIT",
     "keywords": ["php", "framework", "nano", "mvc"],
