@@ -18,7 +18,7 @@ A minimal PHP microframework. No magic, no bloat — just routing, controllers, 
 ## Installation
 
 ```bash
-composer create-project 4afw/4afw myproject
+composer create-project 4asuite/nano-php myproject
 cd myproject
 ```
 
